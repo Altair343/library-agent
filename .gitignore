@@ -1,0 +1,28 @@
+# Entorno y configuración local
+.venv/
+.env
+.env.*
+!.env.example
+
+# Archivos generados por Python
+__pycache__/
+*.py[cod]
+
+# Herramientas de desarrollo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# RAG
+/artifacts/knowledge/
+
+#BD
+/backups/
+
+# Evaluations
+/artifacts/evaluations/
+
+#GIT
+/artifacts/ci/
