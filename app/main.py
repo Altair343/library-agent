@@ -7,11 +7,11 @@ from app.core.config import Settings, get_settings
 def create_app(settings: Settings | None = None) -> FastAPI:
     config = settings if settings is not None else get_settings()
 
-    application = FastAPI(
+    app = FastAPI(
         title=config.app_name,
         debug=config.debug and config.environment == "local",
     )
 
-    application.include_router(health_router)
+    app.include_router(health_router)
 
-    return application
+    return app

@@ -13,6 +13,11 @@ uv run ruff format app
 uv run mypy app
 ```
 
+## Docker
+```powershell
+docker-compose up -d --build
+```
+
 ## Verify the local API
 - Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 - Doc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)

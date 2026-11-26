@@ -1,0 +1,26 @@
+name: shop-agent
+
+services:
+  library_db_postgres:
+    image: ${LIBRARY_POSTGRES_IMAGE:?Define LIBRARY_POSTGRES_IMAGE}
+    container_name: db_postgres
+    environment:
+      POSTGRES_DB: ${LIBRARY_DB_NAME:?Define LIBRARY_DB_NAME}
+      POSTGRES_USER: ${LIBRARY_DB_USER:?Define LIBRARY_DB_USER}
+      POSTGRES_PASSWORD: ${LIBRARY_DB_PASSWORD:?Define LIBRARY_DB_PASSWORD}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${LIBRARY_DB_PORT:-5433}:5432"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
