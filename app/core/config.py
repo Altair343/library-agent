@@ -24,10 +24,10 @@ class Settings(BaseSettings):
     db_user: str = Field(default="shop_local_admin", min_length=1)
     db_password: SecretStr = Field(min_length=1)
 
-    db_pool_size: int = Field(default=5, ge=1)
-    db_max_overflow: int = Field(default=10, ge=0)
-    db_pool_timeout: float = Field(default=30.0, gt=0)
-    db_connect_timeout: int = Field(default=10, ge=2)
+    db_pool_size: int = Field(default=5, ge=1, le=20)
+    db_max_overflow: int = Field(default=5, ge=0, le=20)
+    db_pool_timeout: int = Field(default=10, ge=1, le=60)
+    db_connect_timeout: int = Field(default=5, ge=1, le=60)
 
     @property
     def database_url(self) -> URL:
