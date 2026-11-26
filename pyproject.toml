@@ -7,7 +7,11 @@ authors = [
     { name = "Altair343", email = "and97_26@hotmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "fastapi>=0.165.0",
+    "pydantic-settings>=2.16.3",
+    "uvicorn[standard]>=0.54.0",
+]
 
 [project.scripts]
 library-agent = "library_agent:main"
@@ -15,3 +19,11 @@ library-agent = "library_agent:main"
 [build-system]
 requires = ["uv_build>=0.13.8,<0.14.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]
