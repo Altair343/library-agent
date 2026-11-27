@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.api.health import router as health_router
+from app.api.v1.router import api_router
 from app.core.config import Settings, get_settings
 from app.db.session import Database
 
@@ -29,5 +30,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
 
     app.include_router(health_router)
+    app.include_router(api_router, prefix="/api/v1")
 
     return app

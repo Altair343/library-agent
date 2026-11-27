@@ -15,7 +15,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.db.base import Base
 
 
-class Product(Base):
+class Book(Base):
     __tablename__ = "book"
 
     __table_args__ = (
@@ -38,7 +38,7 @@ class Product(Base):
         nullable=False,
     )
 
-    isbn: Mapped[str] = mapped_column(
+    isbn: Mapped[str | None] = mapped_column(
         String(24),
         unique=True,
         nullable=True,
